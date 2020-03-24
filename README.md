@@ -1,1 +1,1 @@
-# Ransomware-with-Fernet
+# Basic Ransomware in python with server
