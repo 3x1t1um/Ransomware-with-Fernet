@@ -71,16 +71,14 @@ def encryption(path, key):
 
 def get_key():
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	
-  try:
-	sock.connect(('localhost',1550))
-	key = sock.recv(10000)
-	fern = base64.b64decode(key)
-	return fern
-	
-  except:
-	win32ui.MessageBox('Please restart the script','Error')
-	sys.exit(1)
+	try:
+		sock.connect(('localhost',1550))
+		key = sock.recv(10000)
+		fern = base64.b64decode(key)
+		return fern
+	except:
+		win32ui.MessageBox('Please restart the script','Error')
+		sys.exit(1)
 
 
 if __name__ == '__main__':
