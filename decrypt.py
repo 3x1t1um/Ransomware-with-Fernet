@@ -6,13 +6,13 @@ import ctypes
 import win32ui
 import getpass
 
-key = 'ENTER THE KEY HERE' #the key is on the .txt file create by the server
+key = 'ENTER THE KEY HERE' # the key can be found in the .txt file created by the server
 
 banner = ''' ▄▄▄        ██████  ██░ ██  ██▓ ▄▄▄      
  ▒████▄    ▒██    ▒ ▓██░ ██▒▓██▒▒████▄    
  ▒██  ▀█▄  ░ ▓██▄   ▒██▀▀██░▒██▒▒██  ▀█▄  
  ░██▄▄▄▄██   ▒   ██▒░▓█ ░██ ░██░░██▄▄▄▄██ 
-  ▓█   ▓██▒▒██████▒▒░▓█▒░██▓░██░ ▓█   ▓██▒file:///C:/Users/gaston/Downloads/main.cpp
+  ▓█   ▓██▒▒██████▒▒░▓█▒░██▓░██░ ▓█   ▓██▒
   ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░▓   ▒▒   ▓▒█░
    ▒   ▒▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░ ▒ ░  ▒   ▒▒ ░
    ░   ▒   ░  ░  ░   ░  ░░ ░ ▒ ░  ░   ▒   
