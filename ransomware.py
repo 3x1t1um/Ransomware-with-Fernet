@@ -24,7 +24,7 @@ def changewallpaper(path):
 		f.write(requests.get('http://image.noelshack.com/fichiers/2020/13/2/1585058003-lzgyj0.jpg').content)
 	f.close()
 	
-	 = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,"Control Panel\\Desktop",0,win32con.KEY_SET_VALUE)
+	paper = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,"Control Panel\\Desktop",0,win32con.KEY_SET_VALUE)
 	win32api.RegSetValueEx(paper, "WallpaperStyle", 0, win32con.REG_SZ, "0")
 	win32api.RegSetValueEx(paper, "TileWallpaper", 0, win32con.REG_SZ, "0")
 	win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER, path, 1+2)
